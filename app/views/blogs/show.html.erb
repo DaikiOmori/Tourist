@@ -1,0 +1,30 @@
+<div class="row">
+  <aside class="col-xs-8">
+    <div class="text-center">
+    <div class="article" >
+      <div class="article article-title">
+        <h1><%= @blog.title %></h1>
+      </div>
+      <div class="article article-image">
+        <%= link_to @blog.user.name, user_path(@blog.user) %> <span class="text-muted">posted at <%= @blog.created_at %></span>
+          <div align="center">
+            <% if @blog.blog_image? %>
+              <%= image_tag @blog.blog_image, :size =>'300x300', class: "media-object img-rounded img-responsive ", alt: "ブログ画像" %>
+            <% else %>
+              <%= image_tag '/images/noimage-c2b82497da6a622e1dfd4f67add4b974.png', :size =>'200×200', class: "media-object img-rounded img-responsive ", alt: "ブログ画像" %>
+            <% end %>
+          </div>
+      </div>
+      <div class="article article-content">
+        <h3><%= @blog.content %></h3>
+      </div>
+        <% if current_user != @user %>
+  　       <%= render 'likes/like_button', blog: @blog %>
+　      <% end %>
+    </div>
+    </div>
+  </aside>
+  <div class="col-xs-4">
+    <%= render 'users/user', users: @user %>
+  </div>
+</div>

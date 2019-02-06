@@ -1,0 +1,15 @@
+<% if logged_in? %>
+  <div class="col-xs-offset-1">
+    <% if current_user.like?(blog) %>
+      <%= form_for(current_user.likes.find_by(blog_id: blog.id), html: { method: :delete }) do |f| %>
+        <%= hidden_field_tag :blog_id, blog.id %>
+        <%= f.submit 'Unlike', class: 'btn btn-danger btn-md' %>
+      <% end %>
+    <% else %>
+       <%= form_for(current_user.likes.build) do |f| %>
+         <%= hidden_field_tag :blog_id, blog.id %>
+         <%= f.submit 'Like', class: 'btn btn-primary btn-md' %>
+       <% end %>
+    <% end %>
+  </div>
+<% end %>

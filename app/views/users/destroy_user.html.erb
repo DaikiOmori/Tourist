@@ -1,0 +1,18 @@
+<div class="col-xs-offset-4 col-xs-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <img class="media-object img-rounded img-responsive" src="<%= @user.profile_image %>" alt="">
+    </div>
+    <div class="panel-body">
+      <div class="text-center">
+        <h1 class="panel-title"><%= @user.name %></h1>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <h4 class="panel-description"><%= @user.profile_description %></h4>
+    </div>
+    <div class="text-center">
+      <%= link_to 'このユーザーを削除する', @user, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>

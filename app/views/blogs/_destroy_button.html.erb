@@ -1,0 +1,3 @@
+<% if current_user == blog.user %>
+  <%= link_to "Delete", blog, method: :delete, data: { confirm: "記事を削除してよろしいですか?" }, class: 'btn btn-danger btn-xs' %>
+<% end %>

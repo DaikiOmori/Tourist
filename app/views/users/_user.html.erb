@@ -1,0 +1,22 @@
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div align="center">
+          <% if @user.profile_image? %>
+            <%= image_tag @user.profile_image, class: "media-object img-rounded img-responsive", alt: "プロフィール画像" %>
+          <% else %>
+            <%= image_tag '/images/no-translate-detected_318-10541.jpg', class: "media-object img-rounded img-responsive", alt: "プロフィール画像" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="text-center">
+          <h1 class="panel-title"><%= @user.name %></h1>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <h4 class="panel-description"><%= @user.profile_description %></h4>
+      </div>
+    </div>
+    <% if current_user == @user %>
+      <%= link_to '編集する', profile_edit_path(current_user), class: 'btn btn-default' %>
+    <% end %>

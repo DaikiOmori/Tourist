@@ -1,0 +1,24 @@
+<div class="row">
+  <aside class="col-xs-8">
+    <%= form_for(@blog) do |f| %>
+      <div class="form-group">
+       <%= f.label :title, 'タイトル' %>
+       <%= f.text_area :title, class: 'form-control', rows: 1 %> 
+      </div>
+      <div class="form-group">
+       <%= f.label :画像, '画像' %>
+       <div align='center'>
+            <%= image_tag '/images/noimage-c2b82497da6a622e1dfd4f67add4b974.png', :size =>'100x100', class: "media-object img-rounded", alt: "ブログ画像" %><br>
+       </div>
+       <%= f.file_field :blog_image, class: 'form-control', rows: 5 %> 
+      </div>
+      <div class="form-group">
+        <%= f.label :content, '記事' %>
+        <%= f.text_area :content, class: 'form-control', rows: 30 %>
+      </div>
+      <div class="col-xs-2">
+        <%= f.submit '公開する', class: 'btn btn-primary btn-block' %>
+      </div>    
+    <% end %>
+  </aside>
+</div>

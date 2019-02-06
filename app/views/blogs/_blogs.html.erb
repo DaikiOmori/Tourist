@@ -1,0 +1,31 @@
+<aside class=>
+<ul class="media-list">
+    <% blogs.each do |blog| %>
+    <li class="media">
+      <aside class="col-xs-2">
+      <div class="media-left">
+          <% if blog.blog_image? %>
+            <%= image_tag blog.blog_image, :size =>'100x100',  class: "media-object img-rounded img-responsive", alt: "ブログ画像" %>
+          <% else %>
+            <%= image_tag '/images/noimage-c2b82497da6a622e1dfd4f67add4b974.png', :size =>'100x100', class: "media-object img-rounded", alt: "ブログ画像" %>
+          <% end %>
+      </div>
+      </aside>
+      <div class="col-xs-6">
+        <div>
+          <%= link_to blog.user.name, user_path(blog.user) %> <span class="text-muted">posted at <%= blog.created_at %></span>
+        </div>
+        <div>
+          <h3><%= link_to blog.title, blog_path(blog) %></h3>
+        </div>
+      </div>
+      <div class="media-right">
+        <% if current_user == blog.user %>
+            <%= link_to "削除する", blog_path(blog), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to "編集する", edit_blog_path(blog),  class: 'btn btn-primary btn-xs' %>
+        <% end %>
+      </div>
+    </li>
+    <% end %>
+</ul>
+</aside>
