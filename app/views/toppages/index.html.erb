@@ -1,13 +1,13 @@
 <% if logged_in? %>
   <div class="text-center">
-　<h1>ブログ一覧</h1><br>
+　<h1>記事一覧</h1><br>
 　</div>
 　<%= render 'blogs/blogs', blogs: @blogs %>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
-      <h1>Welcome to the Myblog</h1>
-      <%= link_to 'さあ、始めよう!', signup_path, class: 'btn btn-lg btn-primary' %>
+      <h1>Welcome to the Tourist</h1>
+      <%= link_to 'こんにちは', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
   <h1>ブログ一覧</h1><br>

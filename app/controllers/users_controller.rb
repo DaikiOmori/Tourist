@@ -5,6 +5,7 @@ before_action :correct_user, only: [:destroy, :profile_edit, :edit, :update, :de
   def show
     @user = User.find(params[:id])
     @blogs = @user.blogs.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
   
   def new

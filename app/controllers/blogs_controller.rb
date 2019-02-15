@@ -4,6 +4,12 @@ before_action :correct_user, only: [:destroy, :edit, :update]
   def show
     @blog = Blog.find(params[:id])
     @user = @blog.user
+    @address = @blog.address
+    @hash = Gmaps4rails.build_markers(@address) do |address, marker|
+      marker.lat @blog.latitude
+      marker.lng @blog.longitude
+      marker.json({title: @blog.title})
+    end
   end
 
   def new
@@ -46,7 +52,7 @@ before_action :correct_user, only: [:destroy, :edit, :update]
 private
 
   def blog_params
-    params.require(:blog).permit(:blog_image, :title, :content, :profile_image)
+    params.require(:blog).permit(:blog_image, :title, :address, :content, :profile_image, :latitude, :longitude)
   end
   
   def correct_user
